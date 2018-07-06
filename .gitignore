@@ -1,2 +1,6 @@
 adserver.db
 tmp/*
+
+# misc
+.DS_Store
+.env

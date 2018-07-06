@@ -1,9 +1,10 @@
-# set utf-8 for outgoing
-# before do
-# 	headers "Content-Type" => "application/json"
-# end
+helpers do
+end
 
 get '/' do
 	erb :index
 end
 
+get '/topics' do
+	erb :topics
+end

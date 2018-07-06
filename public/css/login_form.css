@@ -1,0 +1,208 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  min-height: 55vh;
+  min-width: 21vw;
+  position: relative;
+  left: 40%;
+  background: linear-gradient(to bottom right, #451025, #b55246);
+  border-radius: 3rem;
+}
+
+.logo p:first-child {
+  text-align: center;
+  color: white;
+  font-family: 'PT Sans';
+  font-size: 6rem;
+  font-style: italic;
+  margin: 0%;
+}
+
+.logo p:last-child {
+  text-align: center;
+  color: white;
+  font-family: 'PT Sans';
+  font-size: 1.5rem;
+}
+
+.email {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  top: 8vh;
+  left: 1.5vw;
+  text-align: center;
+  min-width: 18vw;
+  height: 3vw;
+}
+
+.email input {
+  width: 18vw;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  padding-top: 1rem;
+  padding-left: 5rem;
+  outline: none;
+  color: white;
+  font-size: 2rem;
+}
+
+.email i {
+  position: absolute;
+  left: 1rem;
+  font-size: 2rem;
+  color: white;
+  top: 2rem;
+}
+
+.email input::placeholder {
+  color: white;
+  font-family: 'PT Sans';
+  font-size: 2rem;
+}
+
+.password {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  top: 12vh;
+  left: 1.5vw;
+  text-align: center;
+  min-width: 18vw;
+  height: 3vw;
+}
+
+.password input {
+  width: 18vw;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  padding-top: 1rem;
+  padding-left: 5rem;
+  color: white;
+  font-size: 1.8rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  border: none;
+  border-bottom: 2px solid white;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  outline: none;
+}
+
+.password i {
+  position: absolute;
+  left: 1rem;
+  font-size: 2rem;
+  color: white;
+  top: 2rem;
+}
+
+.password input::placeholder {
+  color: white;
+  font-family: 'PT Sans';
+  font-size: 2rem;
+}
+
+.confirm-password {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  top: 12vh;
+  left: 1.5vw;
+  text-align: center;
+  min-width: 18vw;
+  height: 3vw;
+}
+
+.confirm-password input {
+  width: 18vw;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  padding-top: 1rem;
+  padding-left: 5rem;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.confirm-password i {
+  position: absolute;
+  left: 1rem;
+  font-size: 2rem;
+  color: white;
+  top: 2rem;
+}
+
+.confirm-password input::placeholder {
+  color: white;
+  font-family: 'PT Sans';
+  font-size: 2rem;
+}
+
+.remember {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  top: 13vh;
+  left: 1.5vw;
+  text-align: center;
+  min-width: 18vw;
+  color: white;
+}
+
+.remember p {
+  margin-top: .25rem;
+  margin-left: 1rem;
+  font-size: 12px;
+}
+
+.login_button, .register_button {
+  text-align: center;
+  padding: 0%;
+  position: relative;
+  top: 15vh;
+  left: 1.5vw;
+  height: 4vh;
+  min-width: 18.2vw;
+  border-radius: 2rem;
+  font-weight: bold;
+  background-color: #f7f7f7;
+}
+
+.login_button:hover, .register_button:hover {
+  border: none;
+  background-color: #d8868c;
+}
+
+.toggle-register, .toggle-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  top: 17vh;
+  left: 2vw;
+  text-align: center;
+  min-width: 20vw;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.toggle-register a, .toggle-login a {
+  margin-left: 1rem;
+  color: white;
+  font-size: 1.3rem;
+}
