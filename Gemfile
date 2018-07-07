@@ -8,4 +8,6 @@ gem 'datamapper'
 gem 'dm-sqlite-adapter'
 gem 'rerun'
 gem 'json'
-
+gem 'bcrypt'
+gem 'sinatra-flash'
+gem 'dm-noisy-failures'

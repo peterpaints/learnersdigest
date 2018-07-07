@@ -1,9 +1,10 @@
 require 'sqlite3'
-require 'pg'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-migrations'
-require './lib/authorization'
+require 'dm-validations'
+require 'bcrypt'
+require 'dm-noisy-failures'
 
 configure do
   # Use Heroku or local Sqlite
@@ -17,7 +18,8 @@ class Topic
   property :id,           Serial
   property :title,        String
 
-  has n, :users
+  belongs_to :user, :required => false
+  belongs_to :userdigest, :required => false
 
 end
 
@@ -26,18 +28,37 @@ class User
   include DataMapper::Resource
 
   property :id,           Serial
+  property :email,        String, unique: true, required: true, :format => :email_address
+  property :password,     Text
+  property :created_at,   DateTime
+  property :updated_at,   DateTime
 
-  has n, :topics
+  has n, :topics, :constraint => :destroy
+  has n, :userdigests, :constraint => :destroy
+
+  def hash_password(password)
+    password_hash = BCrypt::Password.create(password)
+    password_hash
+  end
+
+  def is_registered_password(password)
+    BCrypt::Password.new(self.password) == password
+  end
 
 end
 
-class Digest
+class Userdigest
 
   include DataMapper::Resource
 
   property :id,           Serial
+  property :articles,        Text
+  property :created_at,   DateTime
+  property :updated_at,   DateTime
 
-  has n, :topics
+  has n, :topics, :constraint => :destroy
+
+  belongs_to :user, :required => false
 
 end
 

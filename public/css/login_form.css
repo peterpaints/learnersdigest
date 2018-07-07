@@ -188,6 +188,10 @@ input:-webkit-autofill:focus {
   background-color: #d8868c;
 }
 
+.login_button:focus, .register_button:focus {
+  outline: none;
+}
+
 .toggle-register, .toggle-login {
   display: flex;
   flex-direction: row;
