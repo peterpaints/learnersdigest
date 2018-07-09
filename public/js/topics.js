@@ -2,25 +2,14 @@
 
 window.onload = () => {
   const vis = window.vis;
+  const topics = gon.topic_titles.map((title) => {
+    return { label: title };
+  });
 
-  const nodes = new vis.DataSet([
-    { label: 'Python' },
-    { label: 'JavaScript' },
-    { label: 'CSS' },
-    { label: 'HTML' },
-    { label: 'C#' },
-    { label: 'Java' },
-    { label: 'C++' },
-    { label: 'Design' },
-    { label: 'Ruby' },
-    { label: 'Ruby on Rails' },
-  ]);
+  const nodes = new vis.DataSet(topics);
 
   const edges = new vis.DataSet();
   const container = document.getElementById('bubbles');
-
-  console.log('Container: ', container);
-
   const data = {
     nodes,
     edges,
@@ -30,12 +19,17 @@ window.onload = () => {
       borderWidth: 0,
       shape: 'circle',
       color: {
-        background: '#F92C55',
+        background: '#b55246',
         highlight: {
-          background: '#F92C55',
-          border: '#F92C55',
+          background: '#451025',
+          border: '#451025',
+        },
+        hover: {
+          background: '#451025',
+          border: '#451025',
         },
       },
+      size: 100,
       font: {
         color: '#fff',
       },
@@ -45,8 +39,13 @@ window.onload = () => {
       minVelocity: 0.01,
       solver: 'repulsion',
       repulsion: {
-        nodeDistance: 40,
+        nodeDistance: 55,
       },
+    },
+    interaction: {
+      dragView: false,
+      zoomView: false,
+      hover: true,
     },
   };
   const network = new vis.Network(container, data, options);
@@ -56,7 +55,35 @@ window.onload = () => {
   network.on('click', (e) => {
     if (e.nodes.length) {
       const node = nodes.get(e.nodes[0]);
-      // Do something
+      if (!node.color) {
+        node.color = {
+          background: '#451025',
+          highlight: {
+            background: '#451025',
+            border: '#451025',
+          },
+        }
+      } else {
+        // node.color.background == '#451025' ? node.color.background = '#b55246' : node.color.background = '#451025';
+        if (node.color.background == '#451025') {
+          node.color = {
+            background: '#b55246',
+            highlight: {
+              background: '#b55246',
+              border: '#b55246',
+            },
+          }
+        } else {
+          node.color = {
+            background: '#451025',
+            highlight: {
+              background: '#451025',
+              border: '#451025',
+            },
+          }
+        }
+      }
+      // gon.selected_topics.push(node.label);
       nodes.update(node);
     }
   });

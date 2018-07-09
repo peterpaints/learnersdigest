@@ -2,7 +2,9 @@ module Sinatra
   module Authorization
 
   def unauthorized!
-    throw :halt, [ 401, 'Authorization Required' ]
+    # throw :halt, [ 401, 'Authorization Required' ]
+    flash[:danger] = "You're not authorized. Please Log In."
+    redirect '/'
   end
 
   def bad_request!

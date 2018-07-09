@@ -1,23 +1,24 @@
-<nav className="navbar" role="navigation" aria-label="main navigation">
-  <Link to="/dashboard">
-  <img className="logo" src="/assets/images/andelaLogo.png" alt="Wire" />
-  </Link>
-  <div className="right-nav-section">
-    <input className="search-input" onFocus={this.handleSearch} type="text" placeholder="Search" />
-    <div className="notifications">
-      <img src="/assets/images/bell_icon.svg" color="#3960ad" className="notification-icon" />
-      <Badge badgeContent={3} className="badge" />
+<link href="/css/navbar.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <a href="/dashboard">
+    <div class="logo">
+      <p>LD</p>
     </div>
-    <div className="profile">
-      <div className="dropdowntn">
-        <img className="profile-img" src={localStorage.getItem( 'user_avatar')} alt="Wire" />
-        <span className="user-name">{localStorage.getItem('user')}</span>
-        <i className="fa fa-caret-down" aria-hidden="true" />
+  </a>
+  <div class="right-nav-section">
+    <div class="notifications">
+      <img src="/images/bell_icon.svg" color="#3960ad" class="notification-icon" />
+    </div>
+    <div class="profile">
+      <div class="dropdowntn">
+        <!-- <img class="profile-img" src="" /> -->
+        <span class="user-name"></span>
       </div>
-      <div className="dropdown-content">
+      <div class="dropdown-content">
         <span>Profile</span>
         <span>Settings</span>
-        <span onClick={this.handleSignOut}>Logout</span>
+        <span>Logout</span>
       </div>
     </div>
   </div>

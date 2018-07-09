@@ -2,11 +2,14 @@ require_relative './lib/authorization'
 require_relative './lib/models'
 
 require 'sinatra/flash'
+require 'gon-sinatra'
 
+set :session_secret, 'SESSION_SECRET'
 enable :sessions
 
 helpers do
 	include Sinatra::Authorization
+	Sinatra::register Gon::Sinatra
 end
 
 get '/' do
@@ -18,6 +21,19 @@ end
 
 get '/topics' do
 	require_admin
+	@topics = Topic.all
+	@topic_titles = []
+	@topics.each { |topic| @topic_titles << topic.title }
+	gon.topic_titles = @topic_titles
+	# gon.selected_topics = []
+	# if gon.selected_topics
+	# 	@ids = gon.selected_topics.map do |selected_topic|
+	# 		topic = Topic.get(:title => selected_topic)
+	# 		topic.id
+	# 	end
+	# 	@user = User.first(:email => session[:email])
+	# 	@user.topics = @ids unless @user.nil?
+	# end
 	erb :topics
 end
 
@@ -63,6 +79,6 @@ post '/login' do
 end
 
 get "/logout" do
-  session[:username] = nil
+  session[:email] = nil
   redirect "/"
 end
