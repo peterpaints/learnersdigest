@@ -1,6 +1,7 @@
 /* eslint-env browser */
 
 window.onload = () => {
+  $('.alert').hide();
   const vis = window.vis;
   const topics = gon.topic_titles.map((title) => {
     return { label: title };
@@ -64,7 +65,6 @@ window.onload = () => {
           },
         }
       } else {
-        // node.color.background == '#451025' ? node.color.background = '#b55246' : node.color.background = '#451025';
         if (node.color.background == '#451025') {
           node.color = {
             background: '#b55246',
@@ -83,8 +83,34 @@ window.onload = () => {
           }
         }
       }
-      // gon.selected_topics.push(node.label);
       nodes.update(node);
     }
+  });
+
+  const done = document.getElementById('done');
+  done.addEventListener('click', () => {
+    const nodes = Object.values(network.body.nodes);
+    const selected_topics = nodes.filter((node) => {
+      return node.options.color.background == '#451025'
+    }).map((node) => {
+      return node.options.label;
+    });
+
+    return $.ajax({
+      url: "/topics",
+      type: "POST",
+      data: {selected_topics},
+      success: (response) => {
+        if (response.success && response.status == 201) {
+          window.location.href = '/dashboard';
+        }
+      },
+      error: (error) => {
+        if (error.responseJSON.error) {
+          $('<p>' + error.responseJSON.message + '</p>').appendTo('.alert');
+          $('.alert').show();
+        }
+      },
+    });
   });
 };

@@ -1,4 +1,4 @@
-.navbar {
+.nav {
   /* background: linear-gradient(to top right, #b55246, #c36225); */
   background: #602c25;
   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.16);
@@ -6,11 +6,10 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 102vw;
+  width: 100vw;
   height: 9vh;
   z-index: 1;
   position: relative;
-  left: -1vw;
 }
 
 .navbar a {

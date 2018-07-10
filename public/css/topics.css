@@ -19,11 +19,7 @@
   text-align: center;
 }
 
-.button a {
-  outline: none;
-}
-
-button {
+#done {
   text-align: center;
   padding: 0%;
   position: relative;
@@ -36,11 +32,11 @@ button {
   background-color: #451025;
 }
 
-button:hover {
+#done:hover {
   border: none;
   background-color: #b55246;
 }
 
-button:focus {
+#done:focus {
   outline: none;
 }
