@@ -18,9 +18,7 @@ class Topic
   property :id,           Serial
   property :title,        String
 
-  belongs_to :user, :required => false
-  belongs_to :userdigest, :required => false
-
+  has n, :users, :through => Resource
 end
 
 class User
@@ -33,8 +31,8 @@ class User
   property :created_at,   DateTime
   property :updated_at,   DateTime
 
-  has n, :topics, :constraint => :destroy
-  has n, :userdigests, :constraint => :destroy
+  has n, :topics, :through => Resource
+  has n, :userdigests, :through => Resource
 
   def hash_password(password)
     password_hash = BCrypt::Password.create(password)
@@ -56,7 +54,7 @@ class Userdigest
   property :created_at,   DateTime
   property :updated_at,   DateTime
 
-  has n, :topics, :constraint => :destroy
+  has n, :topics, :through => :user
 
   belongs_to :user, :required => false
 

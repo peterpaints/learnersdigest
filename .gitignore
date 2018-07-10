@@ -4,3 +4,4 @@ tmp/*
 # misc
 .DS_Store
 .env
+*.db
