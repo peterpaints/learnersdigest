@@ -1,3 +1,30 @@
 <link href="/css/dashboard.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
 
 <%= erb :navbar %>
+<div class="search">
+  <input class="search-input" type="text" placeholder="Search" />
+</div>
+<div class="dashboard">
+  <div class="digests">
+    <% @digests.each do |digest| %>
+      <% @digest = digest %>
+      <%= erb :digest %>
+    <% end %>
+  </div>
+  <div class="sidebar">
+    <p class="sidebar-title">Topics you follow:</p>
+    <div class="topics">
+      <% @user.topics.each do |topic| %>
+        <span class="list-item">
+          <i class="fa fa-check"></i>
+          <p><%= topic.title %></p>
+        </span>
+      <% end %>
+    </div>
+    <div class="add-more-button">
+      <a href="/topics">
+        <button class="add-more">Add more?</button>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+.article {
+  flex-direction: column;
+  min-height: 10vh;
+  height: auto;
+  margin: 1%;
+  border: 0.1vw solid #efefef;
+  background: #fff;
+}
+
+.title {
+  margin: 1% 1% 0% 1%;
+  color: #000;
+  font-size: 1vw;
+  font-family: 'Ubuntu';
+  min-height: 1vh;
+}
+
+.description {
+  margin: 1% 1% 0% 1%;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 0.9vw;
+  min-height: 1vh;
+}
+
+.url {
+  margin: 1% 1% 0% 1%;
+  font-size: 0.8vw;
+  font-style: italic;
+  min-height: 1vh;
+  border: 0.1vw solid #efefef;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+}
+
+.url a {
+  color: #3b5998;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+.share {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0 1% 1% 1%;
+  font-size: 1vw;
+  font-family: 'Ubuntu';
+  min-height: 1vh;
+  border: 0.1vw solid #efefef;
+  border-top: none;
+  border-left: none;
+}
+
+.share-button {
+  margin: 0;
+  width: 1.5vw;
+  font-size: 1vw;
+}
+
+.share-button .fa-facebook {
+  color: #3b5998;
+}
+
+.share-button .fa-twitter {
+  color: #326ada;
+}
