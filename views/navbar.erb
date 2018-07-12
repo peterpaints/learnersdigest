@@ -8,17 +8,19 @@
   </a>
   <div class="right-nav-section">
     <div class="notifications">
-      <img src="/images/bell_icon.svg" color="#3960ad" class="notification-icon" />
+      <i class="fa fa-bell"></i>
+      <span class="badge">
+        <p>
+          <%= @digests.length unless @digests.empty? %>
+        </p>
+      </span>
     </div>
     <div class="profile">
-      <div class="dropdowntn">
-        <!-- <img class="profile-img" src="" /> -->
-        <span class="user-name"></span>
-      </div>
+      <i class="fa fa-user"></i>
+      <span class="user-name"><%= @user.email %></span>
+      <i class="fa fa-caret-down"></i>
       <div class="dropdown-content">
-        <span>Profile</span>
-        <span>Settings</span>
-        <span>Logout</span>
+        <a href="/logout">Logout</a>
       </div>
     </div>
   </div>

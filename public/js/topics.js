@@ -106,9 +106,11 @@ window.onload = () => {
         }
       },
       error: (error) => {
-        if (error.responseJSON.error) {
+        if (error.responseJSON) {
           $('<p>' + error.responseJSON.message + '</p>').appendTo('.alert');
           $('.alert').show();
+        } else {
+          window.location.href = '/dashboard';
         }
       },
     });
