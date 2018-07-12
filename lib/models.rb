@@ -50,13 +50,25 @@ class Userdigest
   include DataMapper::Resource
 
   property :id,           Serial
-  property :articles,        Text
   property :created_at,   DateTime
   property :updated_at,   DateTime
 
-  has n, :topics, :through => :user
+  has n, :articles, :through => Resource
 
   belongs_to :user, :required => false
+
+end
+
+class Article
+
+  include DataMapper::Resource
+
+  property :id,           Serial
+  property :title,        Text
+  property :description,  Text
+  property :url,          Text
+
+  belongs_to :userdigest, :required => false
 
 end
 

@@ -1,5 +1,6 @@
 require_relative './lib/authorization'
 require_relative './lib/models'
+require_relative './lib/digests'
 
 require 'sinatra/flash'
 require 'gon-sinatra'
@@ -10,7 +11,33 @@ enable :sessions
 
 helpers do
 	include Sinatra::Authorization
+	include Digest
 	Sinatra::register Gon::Sinatra
+end
+
+configure do
+  set :scheduler, Digest.scheduler
+  Digest.scheduler.every('1d') do
+		@users = User.all
+    @users.each do |user|
+			unless user.topics.empty?
+				user_stories = user.topics.map do |topic|
+					article_json = Digest.fetch_article topic.title
+					article = Article.new title: article_json['title'], description: article_json['description'], url: article_json['url']
+					article if article.save
+				end
+			end
+			digest = Userdigest.new
+			unless user_stories.empty?
+				user_stories.each do |article|
+					digest.articles << article
+				end
+				digest.save
+				user.userdigests << digest
+				user.save
+			end
+		end
+  end
 end
 
 get '/' do
@@ -68,6 +95,8 @@ end
 
 get '/dashboard' do
 	require_admin
+	@user = User.first(:email => session[:email])
+	@digests = @user.userdigests
 	erb :dashboard
 end
 
