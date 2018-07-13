@@ -2,9 +2,11 @@ require_relative './lib/authorization'
 require_relative './lib/models'
 require_relative './lib/digests'
 
+require 'dotenv/load'
 require 'sinatra/flash'
 require 'gon-sinatra'
 require 'json'
+require 'pony'
 
 set :session_secret, 'SESSION_SECRET'
 enable :sessions
@@ -16,28 +18,28 @@ helpers do
 end
 
 configure do
-  set :scheduler, Digest.scheduler
-  Digest.scheduler.every('1d') do
+	Pony.options = {
+		:via => :smtp,
+		:via_options => {
+			:address => 'smtp.gmail.com',
+			:port => '587',
+			:enable_starttls_auto => true,
+			:user_name => ENV['GMAIL_USERNAME'],
+			:password => ENV['GMAIL_PASSWORD'],
+			:authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+    	:domain => "localhost:5000" # the HELO domain provided by the client to the server
+		}
+	}
+
+	set :scheduler, Digest.scheduler
+
+	settings.scheduler.every('1d') do
 		@users = User.all
-    @users.each do |user|
-			unless user.topics.empty?
-				user_stories = user.topics.map do |topic|
-					article_json = Digest.fetch_article topic.title
-					article = Article.new title: article_json['title'], description: article_json['description'], url: article_json['url']
-					article if article.save
-				end
-			end
-			digest = Userdigest.new
-			unless user_stories.empty?
-				user_stories.each do |article|
-					digest.articles << article
-				end
-				digest.save
-				user.userdigests << digest
-				user.save
-			end
+		@users.each do |user|
+			Digest.create_digests user
+			# Digest.email user
 		end
-  end
+	end
 end
 
 get '/' do
@@ -53,6 +55,8 @@ get '/topics' do
 	@topic_titles = []
 	@topics.each { |topic| @topic_titles << topic.title }
 	gon.topic_titles = @topic_titles
+	@user = User.first(:email => session[:email])
+	@digests = @user.userdigests
 	erb :topics
 end
 
@@ -83,12 +87,12 @@ post '/topics' do
 		end
 	else
 		if @user.topics.empty?
-				status 500
-				{
-					error: true,
-					status: 500,
-					message: 'Surely, you want to learn something?'
-				}.to_json
+			status 500
+			{
+				error: true,
+				status: 500,
+				message: 'Surely, you want to learn something?'
+			}.to_json
 		end
 	end
 end
@@ -96,11 +100,14 @@ end
 get '/dashboard' do
 	require_admin
 	@user = User.first(:email => session[:email])
-	@digests = @user.userdigests
+	@digests = @user.userdigests.reverse
+	@digest = @digests[0]
+
 	erb :dashboard
 end
 
 post '/register' do
+	validate_params(params)
 	@user = User.first(:email => params[:email])
 	if @user
 		flash[:danger] = "User already exists. Please Log In."
@@ -121,6 +128,7 @@ post '/register' do
 end
 
 post '/login' do
+	validate_params(params)
 	@user = User.first(:email => params[:email])
 	if not @user
 		flash[:danger] = "You do not have an account. Please register."
@@ -137,6 +145,6 @@ post '/login' do
 end
 
 get "/logout" do
-  session[:email] = nil
-  redirect "/"
+	session[:email] = nil
+	redirect "/"
 end

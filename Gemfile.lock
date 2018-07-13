@@ -68,6 +68,7 @@ GEM
       data_objects (= 0.10.17)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.5.0)
     et-orbi (1.1.2)
       tzinfo
     fastercsv (1.5.5)
@@ -92,8 +93,13 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
+    mail (2.7.0)
+      mini_mime (>= 0.1.1)
+    mini_mime (1.0.0)
     multi_json (1.13.1)
     mustermann (1.0.2)
+    pony (1.12)
+      mail (>= 2.0)
     public_suffix (3.0.2)
     raabro (1.1.6)
     rack (2.0.5)
@@ -133,9 +139,11 @@ DEPENDENCIES
   datamapper
   dm-noisy-failures
   dm-sqlite-adapter
+  dotenv
   gon-sinatra
   http
   json
+  pony
   rerun
   rufus-scheduler
   sinatra
