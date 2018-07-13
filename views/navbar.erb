@@ -11,7 +11,7 @@
       <i class="fa fa-bell"></i>
       <span class="badge">
         <p>
-          <%= @digests.length unless @digests.empty? %>
+          <%= @digests.empty? ? @digests.length : 0 %>
         </p>
       </span>
     </div>

@@ -7,10 +7,6 @@ module Sinatra
     redirect '/'
   end
 
-  def bad_request!
-    throw :halt, [ 400, 'Bad Request' ]
-  end
-
   def authorized?
     session[:email].nil? ? false : true
   end
@@ -20,8 +16,20 @@ module Sinatra
     unauthorized!
   end
 
-  def admin?
-    authorized?
+  def is_valid_email?(email)
+    valid = '[A-Za-z\d.+-]+'
+    (email =~ /#{valid}@#{valid}\.#{valid}/) == 0
+  end
+
+  def is_valid_password?(password)
+    valid = '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}'
+    (password =~ /#{valid}/) == 0
+  end
+
+  def validate_params(params)
+    return if self.is_valid_email?(params[:email]) && self.is_valid_password?(params[:password])
+    flash[:danger] = 'Invalid email or password.'
+    redirect '/'
   end
 
   end
