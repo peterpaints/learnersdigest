@@ -1,5 +1,5 @@
 require_relative './lib/authorization'
-require_relative './lib/models'
+require_relative './lib/models/models'
 require_relative './lib/digests'
 
 require 'dotenv/load'

@@ -1,4 +1,4 @@
-require_relative './models'
+require_relative './models/models'
 
 def seed
   if Topic.count == 0
