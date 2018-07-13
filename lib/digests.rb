@@ -2,7 +2,7 @@ require 'rufus-scheduler'
 require 'http'
 require 'pony'
 
-require_relative './models'
+require_relative './models/models'
 
 module Digest
   def self.fetch_article(query)
