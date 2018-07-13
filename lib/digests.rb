@@ -1,5 +1,8 @@
 require 'rufus-scheduler'
 require 'http'
+require 'pony'
+
+require_relative './models'
 
 module Digest
   def self.fetch_article(query)
@@ -18,6 +21,35 @@ module Digest
     @scheduler ||= Rufus::Scheduler.new
   end
 
-  def self.email
+  def self.create_digests(user)
+    unless user.topics.empty?
+      user_stories = user.topics.map do |topic|
+        article_json = self.fetch_article topic.title
+        article = Article.new title: article_json['title'], description: article_json['description'], url: article_json['url']
+        article if article.save
+      end
+    end
+
+    digest = Userdigest.new
+
+    unless user_stories.empty?
+      user_stories.each do |article|
+        digest.articles << article
+      end
+      digest.save
+      user.userdigests << digest
+      user.save
+    end
+  end
+
+  def self.email(user)
+    Pony.mail(
+  		to: user.email,
+  		subject: 'Here\'s a few links worth your time',
+  		html_body: erb(
+  			:digest,
+  			layout: false,
+  		),
+  	)
   end
 end
