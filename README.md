@@ -13,7 +13,7 @@ This are the tools I used:
 * [Sinatra](http://sinatrarb.com/)
 * [DataMapper](https://datamapper.org/)
 * [Rufus Scheduler](https://github.com/jmettraux/rufus-scheduler)
-* [SQLite3](https://www.sqlite.org/index.html)
+* [PostgresQL](https://www.postgresql.org/)
 
 ### Installation
 
@@ -25,6 +25,20 @@ git clone https://github.com/peterpaints/learnersdigest.git
 > Switch to the develop branch using:
 ```
 git checkout develop
+```
+
+> Create two postgres dbs:
+```
+createdb microlearn_dev
+createdb microlearn_test
+```
+
+> Create a .env file with the following sample settings:
+```
+GMAIL_USERNAME=your_gmail_username
+GMAIL_PASSWORD=your_gmail_password
+DATABASE_DEV=postgres://localhost:5432/microlearn_dev
+DATABASE_TEST=postgres://localhost:5432/microlearn_test
 ```
 
 >Run bundler to install gems (dependencies)
@@ -42,6 +56,16 @@ bundle exec rerun 'ruby microlearn.rb'
 Feel you have something you'd like to see added? Raise a PR!
 
 ### Tests
+
+> Run tests with one simple command:
+```
+rspec
+```
+
+> If that doesn't work, try:
+```
+bundle exec rspec
+```
 
 ### License
 
