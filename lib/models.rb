@@ -1,14 +1,18 @@
-require 'sqlite3'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-migrations'
 require 'dm-validations'
+require 'dm-postgres-adapter'
 require 'bcrypt'
-require 'dm-noisy-failures'
+require 'dotenv/load'
+# require 'dm-noisy-failures'
 
-configure do
-  # Use Heroku or local Sqlite
-  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/microlearn.db")
+configure :development do
+  DataMapper.setup(:default, ENV['DATABASE_DEV'])
+end
+
+configure :test do
+  DataMapper.setup(:default, ENV['DATABASE_TEST'])
 end
 
 class Topic
@@ -27,7 +31,7 @@ class User
 
   property :id,           Serial
   property :email,        String, unique: true, required: true, :format => :email_address
-  property :password,     Text
+  property :password,     Text, required: true
   property :created_at,   DateTime
   property :updated_at,   DateTime
 
@@ -73,6 +77,11 @@ class Article
 end
 
 configure :development do
+  # Create or upgrade all tables at once, like magic
+  DataMapper.auto_upgrade!
+end
+
+configure :test do
   # Create or upgrade all tables at once, like magic
   DataMapper.auto_upgrade!
 end

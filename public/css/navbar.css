@@ -53,19 +53,19 @@ a:hover {
 }
 
 .badge {
-  width: 0.8vw;
-  height: 0.8vw;
+  width: 1.2vw;
+  height: 1.2vw;
   border-radius: 50%;
   color: #602c25;
   background: #fff;
   position: absolute;
-  top:-1px;
-  right:-1px;
-  padding: 0% 1% 0% 1%;
+  top:-5px;
+  right:-5px;
+  vertical-align: middle;
 }
 
 .badge p {
-  font-size: 0.8vw;
+  font-size: 0.7vw;
 }
 
 .profile {
