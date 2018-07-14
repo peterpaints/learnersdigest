@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/peterpaints/learnersdigest.svg?branch=develop)](https://travis-ci.org/peterpaints/learnersdigest)
+[![Coverage Status](https://coveralls.io/repos/github/peterpaints/learnersdigest/badge.svg?branch=develop)](https://coveralls.io/github/peterpaints/learnersdigest?branch=develop)
 #### Learner's Digest
 
 ### Intro

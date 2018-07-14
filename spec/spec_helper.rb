@@ -2,6 +2,11 @@ require 'rack/test'
 require 'rspec'
 require 'factory_bot'
 require 'database_cleaner'
+require 'simplecov'
+require 'coveralls'
+
+SimpleCov.start
+Coveralls.wear!
 
 ENV['RACK_ENV'] = 'test'
 
