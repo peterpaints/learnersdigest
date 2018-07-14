@@ -12,16 +12,6 @@ GEM
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
     concurrent-ruby (1.0.5)
-    data_mapper (1.2.0)
-      dm-aggregates (~> 1.2.0)
-      dm-constraints (~> 1.2.0)
-      dm-core (~> 1.2.0)
-      dm-migrations (~> 1.2.0)
-      dm-serializer (~> 1.2.0)
-      dm-timestamps (~> 1.2.0)
-      dm-transactions (~> 1.2.0)
-      dm-types (~> 1.2.0)
-      dm-validations (~> 1.2.0)
     data_objects (0.10.17)
       addressable (~> 2.1)
     database_cleaner (1.7.0)
@@ -47,8 +37,6 @@ GEM
       dm-core (~> 1.2.0)
     dm-migrations (1.2.0)
       dm-core (~> 1.2.0)
-    dm-noisy-failures (0.2.3)
-      data_mapper
     dm-postgres-adapter (1.2.0)
       dm-do-adapter (~> 1.2.0)
       do_postgres (~> 0.10.6)
@@ -74,6 +62,7 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.17)
       data_objects (= 0.10.17)
+    docile (1.3.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.5.0)
@@ -141,6 +130,11 @@ GEM
     ruby_dep (1.5.0)
     rufus-scheduler (3.5.0)
       fugit (~> 1.1, >= 1.1.1)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -148,7 +142,6 @@ GEM
       tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    sqlite3 (1.3.13)
     stringex (1.5.1)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -166,7 +159,6 @@ DEPENDENCIES
   bcrypt
   database_cleaner
   datamapper
-  dm-noisy-failures
   dm-postgres-adapter
   dotenv
   factory_bot
@@ -178,9 +170,9 @@ DEPENDENCIES
   rerun
   rspec
   rufus-scheduler
+  simplecov
   sinatra
   sinatra-flash
-  sqlite3
 
 RUBY VERSION
    ruby 2.5.1p57
