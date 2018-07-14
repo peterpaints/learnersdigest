@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/peterpaints/learnersdigest.svg?branch=ch-staging-158717684)](https://travis-ci.org/peterpaints/learnersdigest)
+[![Coverage Status](https://coveralls.io/repos/github/peterpaints/learnersdigest/badge.svg?branch=ch-staging-158717684)](https://coveralls.io/github/peterpaints/learnersdigest?branch=ch-staging-158717684)
 #### Learner's Digest
 
 ### Intro
