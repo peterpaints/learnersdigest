@@ -72,6 +72,7 @@ post '/topics' do
 
 		@user.save
 		if @user.saved?
+			Digest.create_digests @user unless !@user.userdigests.empty?
 			status 201
 			{
 				success: true,
