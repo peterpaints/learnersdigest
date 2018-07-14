@@ -8,11 +8,15 @@ require 'dotenv/load'
 # require 'dm-noisy-failures'
 
 configure :development do
-  DataMapper.setup(:default, ENV['DATABASE_DEV'])
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
 end
 
 configure :test do
   DataMapper.setup(:default, ENV['DATABASE_TEST'])
+end
+
+configure :production do
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
 end
 
 require_relative './topic'
@@ -26,6 +30,11 @@ configure :development do
 end
 
 configure :test do
+  # Create or upgrade all tables at once, like magic
+  DataMapper.auto_upgrade!
+end
+
+configure :production do
   # Create or upgrade all tables at once, like magic
   DataMapper.auto_upgrade!
 end
