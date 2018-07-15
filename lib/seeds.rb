@@ -1,9 +1,6 @@
 require_relative './models/models'
 
 def seed
-  topic = Topic.first(:title => "Go")
-  topic.title = "Golang" unless topic.nil?
-  topic.save unless topic.nil?
   if Topic.count == 0
     Topic.create(title: "JavaScript")
     Topic.create(title: "Python")
