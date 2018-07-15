@@ -1,6 +1,6 @@
 require_relative './lib/authorization'
 require_relative './lib/models/models'
-require_relative './lib/digest'
+require_relative './lib/digests'
 
 require 'dotenv/load'
 require 'sinatra/flash'
