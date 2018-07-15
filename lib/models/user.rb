@@ -5,6 +5,7 @@ class User
   property :id,           Serial
   property :email,        String, unique: true, required: true, :format => :email_address
   property :password,     Text, required: true
+  property :unsubscribed, Boolean, default: false
   property :created_at,   DateTime
   property :updated_at,   DateTime
 

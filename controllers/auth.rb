@@ -37,6 +37,15 @@ post '/login' do
 end
 
 get "/logout" do
+	require_admin
+	session[:email] = nil
+	redirect "/"
+end
+
+get "/signout" do
+	require_admin
+	@user = User.first(:email => session[:email])
+	@user.destroy
 	session[:email] = nil
 	redirect "/"
 end

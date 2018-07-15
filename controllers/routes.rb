@@ -5,17 +5,6 @@ get '/' do
 	erb :index
 end
 
-get '/topics' do
-	require_admin
-	@topics = Topic.all
-	@topic_titles = []
-	@topics.each { |topic| @topic_titles << topic.title }
-	gon.topic_titles = @topic_titles
-	@user = User.first(:email => session[:email])
-	@digests = @user.userdigests
-	erb :topics
-end
-
 get '/dashboard' do
 	require_admin
 	@user = User.first(:email => session[:email])
@@ -23,4 +12,16 @@ get '/dashboard' do
 	@digest = @digests[0]
 
 	erb :dashboard
+end
+
+get '/unsubscribe' do
+	require_admin
+	@user = User.first(:email => session[:email])
+	@user.unsubscribed = true
+	@user.save
+
+	if @user.saved?
+		flash[:success] = "No more emails. You've successfully unsubscribed."
+		redirect '/'
+	end
 end

@@ -11,7 +11,7 @@
       <i class="fa fa-bell"></i>
       <span class="badge">
         <p>
-          <%= @digests.empty? ? @digests.length : 0 %>
+          <%= @digests.empty? ? 0 : @digests.count %>
         </p>
       </span>
     </div>
@@ -20,7 +20,9 @@
       <span class="user-name"><%= @user.email %></span>
       <i class="fa fa-caret-down"></i>
       <div class="dropdown-content">
+        <a data-toggle="modal" data-target="#unsubmodal">Unsubscribe</a>
         <a href="/logout">Logout</a>
+        <a data-toggle="modal" data-target="#signoutmodal">Signout</a>
       </div>
     </div>
   </div>
