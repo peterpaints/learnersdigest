@@ -119,6 +119,12 @@ body {
   margin-top: 3%;
 }
 
+.fa-trash {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: .8vw;
+  margin-top: 2%;
+}
+
 .add-more-button {
   text-align: center;
 }
