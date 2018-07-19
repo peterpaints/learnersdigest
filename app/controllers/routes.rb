@@ -14,6 +14,7 @@ require 'erb'
 require 'rufus-scheduler'
 
 set :session_secret, 'SESSION_SECRET'
+set :views, "#{settings.root}/app/views/"
 enable :sessions
 
 helpers do

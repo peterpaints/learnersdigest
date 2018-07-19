@@ -2,9 +2,9 @@
 
 task :environment do
   require_relative './microlearn'
-  require_relative './models/models'
-  require_relative './helpers/digests'
-  require_relative './helpers/mailer'
+  require_relative './app/models/models'
+  require_relative './app/helpers/digests'
+  require_relative './app/helpers/mailer'
 end
 
 desc 'Create digests and send them daily'

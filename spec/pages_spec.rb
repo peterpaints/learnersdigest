@@ -50,7 +50,8 @@ describe 'Routes' do
       get '/dashboard'
     end
     it 'should redirect them to "/"' do
-      expect(last_request.session[:flash][:danger]).to match(/You're not authorized. Please Log In.*/)
+      expect(last_request.session[:flash][:danger])
+        .to match(/You're not authorized. Please Log In.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')
@@ -62,7 +63,8 @@ describe 'Routes' do
       get '/topics'
     end
     it 'should redirect them to "/"' do
-      expect(last_request.session[:flash][:danger]).to match(/You're not authorized. Please Log In.*/)
+      expect(last_request.session[:flash][:danger])
+        .to match(/You're not authorized. Please Log In.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')

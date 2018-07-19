@@ -17,11 +17,11 @@ end
 get '/unsubscribe' do
   require_admin
   @user = User.first(email: session[:email])
-  @user.unsubscribed = true
+  @user.unsubscribed = @user.unsubscribed? ? false : true
   @user.save
 
   if @user.saved?
-    flash[:success] = "No more emails. You've successfully unsubscribed."
+    flash[:success] = "Great! You've successfully changed subscription status."
     redirect '/'
   end
 end

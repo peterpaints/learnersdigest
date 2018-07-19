@@ -22,7 +22,7 @@ module Mailer
     @digest = user.userdigests[-1]
     b = binding
     b.local_variable_set(:digest, @digest)
-    template = ERB.new(File.read('views/email_digest.erb')).result(b)
+    template = ERB.new(File.read('app/views/email_digest.erb')).result(b)
     Pony.mail(
       from: 'digests@learnersdigest.com',
       to: user.email,

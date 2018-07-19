@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../models/models'
+require_relative '../app/models/models'
 
 def seed
   return unless Topic.count.zero?
