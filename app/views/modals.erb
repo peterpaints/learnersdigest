@@ -12,7 +12,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <a href="/signout"><button type="button" class="btn btn-primary">Sign me out</button></a>
+        <a href="/user/delete/<%= @user.id unless @user.nil? %>"><button type="button" class="btn btn-primary">Delete it!</button></a>
       </div>
     </div>
   </div>

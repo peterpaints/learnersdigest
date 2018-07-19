@@ -14,10 +14,9 @@ end
 get '/topics' do
   require_admin
   @topics = Topic.all
-  @topic_titles = []
-  @topics.each { |topic| @topic_titles << topic.title }
-  gon.topic_titles = @topic_titles
+  gon.topic_titles = @topics.map(&:title)
   @user = User.first(email: session[:email])
+  gon.user_topics = @user.topics.map(&:title) unless @user.topics.empty?
   @digests = @user.userdigests
   erb :topics
 end

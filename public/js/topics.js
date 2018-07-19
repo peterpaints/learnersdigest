@@ -51,6 +51,15 @@ window.onload = () => {
   };
   const network = new vis.Network(container, data, options);
 
+  // make previously selected topics distinguishable
+  const networkNodes = Object.values(network.body.nodes);
+  if (gon.user_topics) {
+    networkNodes.forEach(node => {
+      if (gon.user_topics.indexOf(node.options.label) != -1) {
+        node.options.color.background = '#451025';
+      }
+    });
+  }
 
   // Events
   network.on('click', (e) => {

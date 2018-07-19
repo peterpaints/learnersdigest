@@ -44,7 +44,7 @@ get '/logout' do
   redirect '/'
 end
 
-get '/signout' do
+get '/user/delete/:id' do
   require_admin
   @user = User.first(email: session[:email])
   @user.destroy
