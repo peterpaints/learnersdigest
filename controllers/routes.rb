@@ -23,7 +23,7 @@ helpers do
   Sinatra.register Gon::Sinatra
 end
 
-configure do
+configure :development do
   set :scheduler, Rufus::Scheduler.new
   settings.scheduler.cron '00 07 * * *' do
     @users = User.all
