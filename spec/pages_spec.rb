@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require_relative '../microlearn'
 require_relative 'spec_helper'
 
-describe "Routes" do
-
+describe 'Routes' do
   before do
     create(:user)
     @user_credentials = {
       email: 'test@user.com',
-      password: 'Testpassword1',
+      password: 'Testpassword1'
     }
   end
 

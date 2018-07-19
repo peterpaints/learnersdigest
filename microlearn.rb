@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'sinatra'
-require_relative 'routes'
+require_relative './controllers/routes'
 require_relative './lib/seeds'
 
 seed

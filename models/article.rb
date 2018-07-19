@@ -1,5 +1,6 @@
-class Article
+# frozen_string_literal: true
 
+class Article
   include DataMapper::Resource
 
   property :id,           Serial
@@ -7,6 +8,5 @@ class Article
   property :description,  Text
   property :url,          Text
 
-  belongs_to :userdigest, :required => false
-
+  belongs_to :userdigest, required: false
 end

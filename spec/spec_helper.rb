@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rack/test'
 require 'rspec'
 require 'factory_bot'
@@ -21,7 +23,7 @@ module RSpecMixin
 end
 
 # For RSpec 2.x and 3.x
-RSpec.configure { |c|
+RSpec.configure do |c|
   c.include RSpecMixin
 
   c.before(:suite) do
@@ -36,4 +38,4 @@ RSpec.configure { |c|
   c.after(:each) do
     DatabaseCleaner.clean
   end
-}
+end

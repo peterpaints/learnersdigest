@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 require_relative '../microlearn'
 require_relative 'spec_helper'
 
-describe "Topics" do
-
+describe 'Topics' do
   before do
     @user = create(:user)
     @topic = create(:topic)
     @user_credentials = {
       email: 'test@user.com',
-      password: 'Testpassword1',
+      password: 'Testpassword1'
     }
   end
 

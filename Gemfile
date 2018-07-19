@@ -1,28 +1,30 @@
+# frozen_string_literal: true
+
 ruby '2.5.1'
 
 source 'https://rubygems.org'
 
-gem 'sinatra'
+gem 'bcrypt'
 gem 'datamapper'
 gem 'dm-postgres-adapter'
-gem 'json'
-gem 'bcrypt'
-gem 'sinatra-flash'
-gem 'gon-sinatra'
-gem 'rufus-scheduler'
-gem 'http'
-gem 'pony'
 gem 'dotenv'
+gem 'gon-sinatra'
+gem 'http'
+gem 'json'
+gem 'pony'
+gem 'rufus-scheduler'
+gem 'sinatra'
+gem 'sinatra-flash'
 
 group :development do
   gem 'rerun'
 end
 
 group :test do
-  gem 'rack-test'
-  gem 'rspec'
+  gem 'coveralls'
   gem 'database_cleaner'
   gem 'factory_bot'
+  gem 'rack-test'
+  gem 'rspec'
   gem 'simplecov'
-  gem 'coveralls'
 end

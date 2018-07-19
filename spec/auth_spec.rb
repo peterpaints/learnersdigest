@@ -1,17 +1,18 @@
+# frozen_string_literal: true
+
 require_relative '../microlearn'
 require_relative 'spec_helper'
 
-describe "Authentication" do
-
+describe 'Authentication' do
   before do
     @user_credentials = {
       email: 'test@user.com',
-      password: 'Testpassword1',
+      password: 'Testpassword1'
     }
 
     @empty_email = {
       email: '',
-      password: 'testpassword',
+      password: 'testpassword'
     }
 
     @invalid_email = {
