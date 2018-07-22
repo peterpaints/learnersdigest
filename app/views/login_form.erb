@@ -1,0 +1,31 @@
+<link href="/css/login_form.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
+
+<div class="login">
+  <div class="logo">
+    <p>LD</p>
+    <p>the learner's digest</p>
+  </div>
+  <form class="login_form" autocomplete="on" action="/login" method="post">
+    <div class="email">
+      <i class="fa fa-user icon"></i>
+      <input type="email" name="email" required placeholder="you@example.com" />
+    </div>
+    <div class="password">
+      <i class="fa fa-key icon"></i>
+      <input type="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+      placeholder="...."
+      title="Password must contain at least 6 characters, including UPPER/lowercase and numbers"
+      />
+    </div>
+    <div class="remember">
+      <input type="checkbox" />
+      <p>Remember Me</p>
+    </div>
+    <button class="login_button" type="submit">Log In</button>
+    <p class="toggle-register">
+      Don't have an account?
+      <a href="#" class="to_register">Register</a>
+    </p>
+  </form>
+  <%= erb :register_form %>
+</div>

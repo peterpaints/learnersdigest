@@ -1,2 +1,7 @@
-adserver.db
 tmp/*
+coverage/
+
+# misc
+.DS_Store
+.env
+*.db

@@ -1,0 +1,42 @@
+.question {
+  text-align: center;
+  position: relative;
+  top: 5vh;
+  font-size: 5rem;
+  color: #451025;
+  font-family: 'Ubuntu';
+}
+
+#bubbles {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.button {
+  text-align: center;
+}
+
+#done {
+  text-align: center;
+  padding: 0%;
+  position: relative;
+  top: 70vh;
+  align: center;
+  height: 4vh;
+  min-width: 18.2vw;
+  border-radius: 2rem;
+  color: white;
+  background-color: #451025;
+}
+
+#done:hover {
+  border: none;
+  background-color: #b55246;
+}
+
+#done:focus {
+  outline: none;
+}

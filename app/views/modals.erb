@@ -1,0 +1,39 @@
+<div class="modal" id="signoutmodal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure about this?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Pushed it too far with the daily emails, didn't we?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a href="/user/delete/<%= @user.id unless @user.nil? %>"><button type="button" class="btn btn-primary">Delete it!</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="unsubmodal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure about this?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        We might push it a tad too far with the daily emails. Oh well ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a href="/unsubscribe"><button type="button" class="btn btn-primary">I'm Sure</button></a>
+      </div>
+    </div>
+  </div>
+</div>

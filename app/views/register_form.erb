@@ -1,0 +1,29 @@
+<form class="register_form" autocomplete="on" action="/register" method="post">
+  <div class="email">
+    <i class="fa fa-user icon"></i>
+    <input type="email" name="email" required placeholder="you@example.com" />
+  </div>
+  <div class="password">
+    <i class="fa fa-key icon"></i>
+    <input type="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+    placeholder="...."
+    title="Password must contain at least 6 characters, including UPPER/lowercase and numbers"
+    onchange="form.confirm.pattern = RegExp.escape(this.value);"
+    />
+  </div>
+  <div class="confirm-password">
+    <i class="fa fa-key icon"></i>
+    <input type="password" name="confirm" required placeholder="...."
+    title="Please enter the same password as above"
+    />
+  </div>
+  <div class="remember">
+    <input type="checkbox" />
+    <p>Remember Me</p>
+  </div>
+  <button class="register_button" type="submit">Register</button>
+  <p class="toggle-login">
+    Already have an account?
+    <a href="#" class="to_login">Log In</a>
+  </p>
+</form>

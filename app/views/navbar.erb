@@ -1,0 +1,29 @@
+<link href="/css/navbar.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
+
+<nav class="nav" role="navigation" aria-label="main navigation">
+  <a href="/dashboard">
+    <div class="logo">
+      <p>LD</p>
+    </div>
+  </a>
+  <div class="right-nav-section">
+    <div class="notifications">
+      <i class="fa fa-bell"></i>
+      <span class="badge">
+        <p>
+          <%= @reading_lists.empty? ? 0 : @reading_lists.size %>
+        </p>
+      </span>
+    </div>
+    <div class="profile">
+      <i class="fa fa-user"></i>
+      <span class="user-name"><%= @user.email %></span>
+      <i class="fa fa-caret-down"></i>
+      <div class="dropdown-content">
+        <a data-toggle="modal" data-target="#unsubmodal"><%= @user.unsubscribed? ? 'Subscribe' : 'Unsubscribe' %></a>
+        <a href="/logout">Logout</a>
+        <a data-toggle="modal" data-target="#signoutmodal">Delete account</a>
+      </div>
+    </div>
+  </div>
+</nav>
