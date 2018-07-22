@@ -5,10 +5,10 @@
   <input class="search-input" type="text" placeholder="Search" />
 </div>
 <div class="dashboard">
-  <div class="digests">
-    <% @digests.each do |digest| %>
-      <% @digest = digest %>
-      <%= erb :digest %>
+  <div class="reading_lists">
+    <% @reading_lists.each do |reading_list| %>
+      <% @reading_list = reading_list %>
+      <%= erb :reading_list %>
     <% end %>
   </div>
   <%= erb :sidebar %>

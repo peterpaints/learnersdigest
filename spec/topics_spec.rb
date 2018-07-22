@@ -6,9 +6,8 @@ require_relative 'spec_helper'
 describe 'Topics' do
   let!(:user) { create(:user) }
   let!(:topic) { create(:topic) }
-
-  before do
-    @user_credentials = {
+  let!(:user_credentials) do
+    {
       email: 'test@user.com',
       password: 'Testpassword1'
     }
@@ -16,7 +15,7 @@ describe 'Topics' do
 
   context 'When a user follows a new topic' do
     before do
-      post '/login', @user_credentials
+      post '/login', user_credentials
       post '/topics', selected_topics: ['JavaScript']
     end
     it 'should associate topic to user' do
@@ -40,7 +39,7 @@ describe 'Topics' do
 
   context 'When an first time user posts no selected_topics to "/topics"' do
     before do
-      post '/login', @user_credentials
+      post '/login', user_credentials
       post '/topics'
     end
     it 'should return error response' do

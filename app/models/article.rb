@@ -8,5 +8,5 @@ class Article
   property :description,  Text
   property :url,          Text
 
-  belongs_to :userdigest, required: false
+  belongs_to :reading_list, required: false
 end

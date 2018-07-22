@@ -4,10 +4,10 @@ require 'http'
 
 require_relative '../models/models'
 
-module Digest
+module Fetch
   module_function
 
-  def fetch_stories(query)
+  def fetch_links(query)
     url = 'https://newsapi.org/v2/everything?'
     q = query + ' tutorial'
     q.gsub!(' ', '%20')
@@ -21,8 +21,8 @@ module Digest
   end
 
   def create_articles(topics)
-    user_articles = topics.map do |topic|
-      article_json = fetch_stories(topic.title)
+    articles = topics.map do |topic|
+      article_json = fetch_links(topic.title)
       article = Article.new(
         title: article_json['title'],
         description: article_json['description'],
@@ -30,17 +30,17 @@ module Digest
       )
       article if article.save
     end
-    user_articles
+    articles
   end
 
-  def create_digests(user)
+  def create_reading_lists(user)
     return if user.topics.empty?
     articles = create_articles(user.topics)
-    digest = Userdigest.new
+    reading_list = ReadingList.new
     articles.each do |article|
-      digest.articles << article
+      reading_list.articles << article
     end
-    digest.save && user.userdigests << digest
+    reading_list.save && user.reading_lists << reading_list
     user.save
   end
 end

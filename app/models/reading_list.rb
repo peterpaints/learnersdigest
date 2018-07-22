@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Userdigest
+class ReadingList
   include DataMapper::Resource
 
   property :id,           Serial

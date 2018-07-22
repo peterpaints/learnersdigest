@@ -19,10 +19,10 @@ module Mailer
   module_function
 
   def send_email(user)
-    @digest = user.userdigests[-1]
+    @reading_list = user.reading_lists.last
     b = binding
-    b.local_variable_set(:digest, @digest)
-    template = ERB.new(File.read('app/views/email_digest.erb')).result(b)
+    b.local_variable_set(:reading_list, @reading_list)
+    template = ERB.new(File.read('app/views/email_reading_list.erb')).result(b)
     Pony.mail(
       from: 'digests@learnersdigest.com',
       to: user.email,
