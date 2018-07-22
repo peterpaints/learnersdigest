@@ -1,4 +1,4 @@
-.digest-card {
+.reading_list-card {
   flex-direction: column;
   margin: 0 3% 3% 0;
   min-height: 20vh;
@@ -12,7 +12,7 @@
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 }
 
-.digest-date {
+.reading_list-date {
   margin: 1% 1% 0 1% ;
   color: #602c25;
   font-size: 1.2vw;

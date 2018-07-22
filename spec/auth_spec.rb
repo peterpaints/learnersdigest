@@ -1,37 +1,37 @@
+# frozen_string_literal: true
+
 require_relative '../microlearn'
 require_relative 'spec_helper'
 
-describe "Authentication" do
-
-  before do
-    @user_credentials = {
+describe 'Authentication' do
+  let!(:user_credentials) do
+    {
       email: 'test@user.com',
-      password: 'Testpassword1',
+      password: 'Testpassword1'
     }
-
-    @empty_email = {
+  end
+  let!(:empty_email) do
+    {
       email: '',
-      password: 'testpassword',
+      password: 'testpassword'
     }
-
-    @invalid_email = {
+  end
+  let!(:invalid_email) do
+    {
       email: 'test.com',
       password: 'test_password'
     }
-
-    @invalid_password = {
+  end
+  let!(:invalid_password) do
+    {
       email: 'test@user.com',
-      password: ''
+      password: 'xfgcjc'
     }
-
-    @wrong_password = {
+  end
+  let!(:wrong_password) do
+    {
       email: 'test@user.com',
       password: 'Testpassword2'
-    }
-
-    @invalid_login_credentials = {
-      email: 'invalid@user.com',
-      password: 'testpassword'
     }
   end
 
@@ -42,24 +42,27 @@ describe "Authentication" do
 
   context 'When user registers with invalid credentials' do
     it 'should display error message and redirect on empty email' do
-      post '/register', @empty_email
-      expect(last_request.session[:flash][:danger]).to match(/Invalid email or password.*/)
+      post '/register', empty_email
+      expect(last_request.session[:flash][:danger])
+        .to match(/Invalid email \or password.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')
     end
 
     it 'should display error message and redirect on invalid email' do
-      post '/register', @invalid_email
-      expect(last_request.session[:flash][:danger]).to match(/Invalid email or password.*/)
+      post '/register', invalid_email
+      expect(last_request.session[:flash][:danger])
+        .to match(/Invalid email or password.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')
     end
 
     it 'should display error message and redirect on invalid password' do
-      post '/register', @invalid_password
-      expect(last_request.session[:flash][:danger]).to match(/Invalid email or password.*/)
+      post '/register', invalid_password
+      expect(last_request.session[:flash][:danger])
+        .to match(/Invalid email or password.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')
@@ -68,9 +71,9 @@ describe "Authentication" do
 
   context 'When user registers with valid credentials' do
     it 'should redirect to "/topics" and save email in session' do
-      post '/register', @user_credentials
+      post '/register', user_credentials
       expect(last_request.session[:flash]).to be_nil
-      expect(last_request.session[:email]).to eq(@user_credentials[:email])
+      expect(last_request.session[:email]).to eq(user_credentials[:email])
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/topics')
@@ -80,18 +83,9 @@ describe "Authentication" do
   context 'When existing user attempts to register' do
     it 'should display error message and redirect' do
       create(:user)
-      post '/register', @user_credentials
-      expect(last_request.session[:flash][:danger]).to match(/User already exists. Please Log In.*/)
-      expect(last_response.status).to eq(302)
-      follow_redirect!
-      expect(last_request.path).to eq('/')
-    end
-  end
-
-  context 'When user logs in with invalid credentials' do
-    it 'should display error message and redirect' do
-      post '/login', @invalid_login_credentials
-      expect(last_request.session[:flash][:danger]).to match(/Invalid email or password.*/)
+      post '/register', user_credentials
+      expect(last_request.session[:flash][:danger])
+        .to match(/User already exists. Please Log In.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')
@@ -100,8 +94,9 @@ describe "Authentication" do
 
   context 'When non-registered user attempts login' do
     it 'should display error message and redirect' do
-      post '/login', @user_credentials
-      expect(last_request.session[:flash][:danger]).to match(/You do not have an account. Please register.*/)
+      post '/login', user_credentials
+      expect(last_request.session[:flash][:danger])
+        .to match(/You do not have an account. Please register.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')
@@ -111,9 +106,9 @@ describe "Authentication" do
   context 'When user logs in with valid credentials' do
     it 'should login successfully' do
       create(:user)
-      post '/login', @user_credentials
+      post '/login', user_credentials
       expect(last_request.session[:flash]).to be_nil
-      expect(last_request.session[:email]).to eq(@user_credentials[:email])
+      expect(last_request.session[:email]).to eq(user_credentials[:email])
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/dashboard')
@@ -123,8 +118,9 @@ describe "Authentication" do
   context 'When existing user logs in with invalid credentials' do
     it 'should login successfully' do
       create(:user)
-      post '/login', @wrong_password
-      expect(last_request.session[:flash][:danger]).to match(/Wrong username or password. Please try again.*/)
+      post '/login', wrong_password
+      expect(last_request.session[:flash][:danger])
+        .to match(/Wrong email or password. Please try again.*/)
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/')
@@ -134,7 +130,7 @@ describe "Authentication" do
   context 'When user logs out' do
     before do
       create(:user)
-      post '/login', @user_credentials
+      post '/login', user_credentials
       get '/logout'
     end
     it 'should redirect to login page' do

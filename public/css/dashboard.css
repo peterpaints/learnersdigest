@@ -58,7 +58,7 @@ body {
   left: 10%;
 }
 
-.digests {
+.reading_lists {
   flex-direction: column;
   width: 62vw;
   height: 75vh;
@@ -66,89 +66,4 @@ body {
   top: 0;
   left: 0;
   overflow: scroll;
-}
-
-.sidebar {
-  flex-direction: column;
-  width: 15vw;
-  min-height: 25vh;
-  height: auto;
-  position: relative;
-  top: 0;
-  border: 0.05vw solid #efefef;
-  background: #fff;
-  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.16);
-  left: 3vw;
-  padding-bottom: 1vh;
-}
-
-.sidebar-title {
-  margin: 5%;
-  color: #602c25;
-  font-size: 1.2vw;
-  height: auto;
-  padding-left: 0.5vw;
-  border: 0.05vw solid #efefef;
-
-}
-
-.topics {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-left: 1vw;
-  border: 0.05vw solid #efefef;
-  margin: 0 5% 0 5%;
-}
-
-.list-item {
-  display: flex;
-  flex-direction: row;
-  margin-top: 5%;
-}
-
-.topics p {
-  margin-left: 5%;
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 0.9vw;
-}
-
-.fa-check {
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 0.5vw;
-  margin-top: 3%;
-}
-
-.fa-trash {
-  color: rgba(0, 0, 0, 0.7);
-  font-size: .8vw;
-  margin-top: 2%;
-}
-
-.add-more-button {
-  text-align: center;
-}
-
-.add-more {
-  text-align: center;
-  padding: 0%;
-  position: relative;
-  top: 1vh;
-  height: 3vh;
-  min-width: 5.2vw;
-  border-radius: 5px;
-  background-color: #602c25;
-  color: white;
-  margin-bottom: 1vh;
-}
-
-.add-more:hover {
-  border: none;
-  background-color: #fafafa;
-  color: #602c25;
-  border: 1px solid #602c25;
-}
-
-.add-more:focus {
-  outline: none;
 }

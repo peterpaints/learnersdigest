@@ -1,0 +1,20 @@
+<link href="/css/sidebar.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
+<script src="/js/sidebar.js"></script>
+
+<div class="sidebar">
+  <p class="sidebar-title">Topics you follow:</p>
+  <div class="topics">
+    <% @user.topics.each do |topic| %>
+      <span class="list-item">
+        <i class="fa fa-check"></i>
+        <a href="/unfollow/<%= topic.id %>"><i class="fa fa-trash"></i></a>
+        <p><%= topic.title %></p>
+      </span>
+    <% end %>
+  </div>
+  <div class="add-more-button">
+    <a href="/topics">
+      <button class="add-more">Add more?</button>
+    </a>
+  </div>
+</div>

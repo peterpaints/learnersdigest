@@ -12,7 +12,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <a href="/signout"><button type="button" class="btn btn-primary">Sign me out</button></a>
+        <a href="/user/delete/<%= @user.id unless @user.nil? %>"><button type="button" class="btn btn-primary">Delete it!</button></a>
       </div>
     </div>
   </div>
@@ -28,11 +28,11 @@
         </button>
       </div>
       <div class="modal-body">
-        Pushed it too far with the daily emails, didn't we?
+        We might push it a tad too far with the daily emails. Oh well ...
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <a href="/unsubscribe"><button type="button" class="btn btn-primary">No more emails</button></a>
+        <a href="/unsubscribe"><button type="button" class="btn btn-primary">I'm Sure</button></a>
       </div>
     </div>
   </div>

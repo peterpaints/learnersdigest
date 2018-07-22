@@ -6,6 +6,8 @@
 
 This app functions like this: You select a few topics of interest, for instance, Sinatra, Rails, Data Structures, etc, and it will send you a daily digest with a curated list of tutorials/articles that you'll love!
 
+Find it here: [Learner's Digest](https://learnersdigest.herokuapp.com)
+
 Every article is fetched from the always
 reliable [NewsApi](https://newsapi.org/docs/endpoints/everything)
 
@@ -37,8 +39,8 @@ createdb microlearn_test
 
 > Create a .env file with the following sample settings:
 ```
-GMAIL_USERNAME=your_gmail_username
-GMAIL_PASSWORD=your_gmail_password
+EMAIL_USERNAME=your_gmail_username
+EMAIL_PASSWORD=your_gmail_password
 DATABASE_DEV=postgres://localhost:5432/microlearn_dev
 DATABASE_TEST=postgres://localhost:5432/microlearn_test
 ```
@@ -51,6 +53,11 @@ bundle
 > Finally, start the app!
 ```
 bundle exec rerun 'ruby microlearn.rb'
+```
+
+> Or, simply:
+```
+rerun rackup
 ```
 
 ### Contribution
