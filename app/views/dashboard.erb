@@ -1,9 +1,14 @@
 <link href="/css/dashboard.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
 
 <%= erb :navbar %>
-<div class="search">
-  <input class="search-input" type="text" placeholder="Search" />
-</div>
+<form action="/dashboard" method="post">
+  <div class="search">
+    <input class="search-input" name="query" type="search"
+      data-provide="typeahead" placeholder="Search"
+      autocomplete="on"
+    />
+  </div>
+</form>
 <div class="dashboard">
   <div class="reading_lists">
     <% @reading_lists.each do |reading_list| %>

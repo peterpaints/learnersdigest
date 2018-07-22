@@ -7,7 +7,19 @@ end
 
 get '/dashboard' do
   @reading_lists = @user.reading_lists.reverse
-  @reading_list = @reading_lists.first
+
+  erb :dashboard
+end
+
+post '/dashboard' do
+  @articles = @user.reading_lists.reverse.map do |reading_list|
+    reading_list.articles.select do |article|
+      article.title =~ /#{params[:query]}/i
+    end
+  end
+  @reading_lists = @user.reading_lists.reverse.reject do |reading_list|
+    (reading_list.articles & @articles.flatten).empty?
+  end
 
   erb :dashboard
 end
