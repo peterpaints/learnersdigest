@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 get '/' do
-  redirect '/dashboard' if authorized?
+  redirect '/dashboard' if logged_in?
   erb :index
 end
 
