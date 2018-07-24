@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../microlearn'
-require_relative 'spec_helper'
+require_relative '../../microlearn'
+require_relative '../spec_helper'
 
 describe 'Routes' do
   let!(:user) { create(:user) }

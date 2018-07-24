@@ -4,6 +4,7 @@ require 'rack/test'
 require 'rspec'
 require 'factory_bot'
 require 'database_cleaner'
+require 'webmock/rspec'
 require 'simplecov'
 require 'coveralls'
 
@@ -13,6 +14,9 @@ Coveralls.wear!
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../microlearn.rb'
+require_relative './support/fake_newsapi'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 module RSpecMixin
   include Rack::Test::Methods
@@ -33,6 +37,7 @@ RSpec.configure do |c|
   c.before(:each) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
+    stub_request(:any, /newsapi.org/).to_rack(FakeNewsAPI)
   end
 
   c.after(:each) do

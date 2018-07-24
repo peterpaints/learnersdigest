@@ -18,6 +18,8 @@ GEM
       term-ansicolor (~> 1.3)
       thor (~> 0.19.4)
       tins (~> 1.6)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     data_objects (0.10.17)
       addressable (~> 2.1)
     database_cleaner (1.7.0)
@@ -83,6 +85,7 @@ GEM
       raabro (~> 1.1)
     gon-sinatra (0.1.2)
       sinatra
+    hashdiff (0.3.7)
     http (3.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -138,6 +141,7 @@ GEM
     ruby_dep (1.5.0)
     rufus-scheduler (3.5.0)
       fugit (~> 1.1, >= 1.1.1)
+    safe_yaml (1.0.4)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -163,6 +167,10 @@ GEM
       unf_ext
     unf_ext (0.0.7.5)
     uuidtools (2.1.5)
+    webmock (3.4.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
@@ -188,6 +196,7 @@ DEPENDENCIES
   simplecov
   sinatra
   sinatra-flash
+  webmock
 
 RUBY VERSION
    ruby 2.5.1p57

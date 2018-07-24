@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../microlearn'
-require_relative 'spec_helper'
+require_relative '../../microlearn'
+require_relative '../spec_helper'
 
 describe 'Topics' do
   let!(:user) { create(:user) }
   let!(:topic) { create(:topic) }
   let!(:user_credentials) do
-    {
-      email: 'test@user.com',
-      password: 'Testpassword1'
-    }
+    { email: 'test@user.com', password: 'Testpassword1' }
   end
 
   context 'When a user follows a new topic' do
