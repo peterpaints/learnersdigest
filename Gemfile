@@ -25,6 +25,7 @@ end
 group :test do
   gem 'coveralls'
   gem 'database_cleaner'
+  gem 'dm-rspec'
   gem 'factory_bot'
   gem 'rack-test'
   gem 'rspec'

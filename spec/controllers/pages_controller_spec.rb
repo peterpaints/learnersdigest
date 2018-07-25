@@ -6,10 +6,7 @@ require_relative '../spec_helper'
 describe 'Routes' do
   let!(:user) { create(:user) }
   let!(:user_credentials) do
-    {
-      email: 'test@user.com',
-      password: 'Testpassword1'
-    }
+    { email: 'test@user.com', password: 'Testpassword1' }
   end
 
   context 'When authenticated user visits default route "/"' do

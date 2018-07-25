@@ -4,69 +4,13 @@ require_relative '../../microlearn'
 require_relative '../spec_helper'
 
 describe 'Authentication' do
-  let!(:user_credentials) do
-    {
-      email: 'test@user.com',
-      password: 'Testpassword1'
-    }
-  end
-  let!(:empty_email) do
-    {
-      email: '',
-      password: 'testpassword'
-    }
-  end
-  let!(:invalid_email) do
-    {
-      email: 'test.com',
-      password: 'test_password'
-    }
-  end
-  let!(:invalid_password) do
-    {
-      email: 'test@user.com',
-      password: 'xfgcjc'
-    }
-  end
-  let!(:wrong_password) do
-    {
-      email: 'test@user.com',
-      password: 'Testpassword2'
-    }
+  let(:user_credentials) do
+    { email: 'test@user.com', password: 'Testpassword1' }
   end
 
   it 'should allow accessing home page' do
     get '/'
     expect(last_response).to be_ok
-  end
-
-  context 'When user registers with invalid credentials' do
-    it 'should display error message and redirect on empty email' do
-      post '/register', empty_email
-      expect(last_request.session[:flash][:danger])
-        .to match(/Invalid email \or password.*/)
-      expect(last_response.status).to eq(302)
-      follow_redirect!
-      expect(last_request.path).to eq('/')
-    end
-
-    it 'should display error message and redirect on invalid email' do
-      post '/register', invalid_email
-      expect(last_request.session[:flash][:danger])
-        .to match(/Invalid email or password.*/)
-      expect(last_response.status).to eq(302)
-      follow_redirect!
-      expect(last_request.path).to eq('/')
-    end
-
-    it 'should display error message and redirect on invalid password' do
-      post '/register', invalid_password
-      expect(last_request.session[:flash][:danger])
-        .to match(/Invalid email or password.*/)
-      expect(last_response.status).to eq(302)
-      follow_redirect!
-      expect(last_request.path).to eq('/')
-    end
   end
 
   context 'When user registers with valid credentials' do
@@ -112,18 +56,6 @@ describe 'Authentication' do
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/dashboard')
-    end
-  end
-
-  context 'When existing user logs in with invalid credentials' do
-    it 'should login successfully' do
-      create(:user)
-      post '/login', wrong_password
-      expect(last_request.session[:flash][:danger])
-        .to match(/Wrong email or password. Please try again.*/)
-      expect(last_response.status).to eq(302)
-      follow_redirect!
-      expect(last_request.path).to eq('/')
     end
   end
 

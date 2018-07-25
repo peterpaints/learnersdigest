@@ -4,6 +4,7 @@ require 'rack/test'
 require 'rspec'
 require 'factory_bot'
 require 'database_cleaner'
+require 'dm-rspec'
 require 'webmock/rspec'
 require 'simplecov'
 require 'coveralls'
@@ -29,6 +30,7 @@ end
 # For RSpec 2.x and 3.x
 RSpec.configure do |c|
   c.include RSpecMixin
+  c.include(DataMapper::Matchers)
 
   c.before(:suite) do
     FactoryBot.find_definitions
