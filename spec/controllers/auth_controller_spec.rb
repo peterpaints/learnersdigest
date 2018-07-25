@@ -1,16 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../../microlearn'
 require_relative '../spec_helper'
 
-describe 'Authentication' do
+describe AuthController do
   let(:user_credentials) do
     { email: 'test@user.com', password: 'Testpassword1' }
-  end
-
-  it 'should allow accessing home page' do
-    get '/'
-    expect(last_response).to be_ok
   end
 
   context 'When user registers with valid credentials' do

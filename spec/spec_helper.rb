@@ -16,14 +16,18 @@ ENV['RACK_ENV'] = 'test'
 
 require_relative '../microlearn.rb'
 require_relative './support/fake_newsapi'
+require_relative './support/helpers'
+
+require_all 'app'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
 module RSpecMixin
   include Rack::Test::Methods
   include FactoryBot::Syntax::Methods
+  include Helpers
   def app
-    Sinatra::Application
+    described_class
   end
 end
 

@@ -1,9 +1,9 @@
 <link href="/css/dashboard.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
 
-<%= erb :navbar %>
-<form action="/dashboard" method="post">
+<%= partial :'partials/navbar' %>
+<form action="/dashboard">
   <div class="search">
-    <input class="search-input" name="query" type="search"
+    <input class="search-input" name="q" type="search"
       data-provide="typeahead" placeholder="Search"
       autocomplete="on"
     />
@@ -12,9 +12,8 @@
 <div class="dashboard">
   <div class="reading_lists">
     <% @reading_lists.each do |reading_list| %>
-      <% @reading_list = reading_list %>
-      <%= erb :reading_list %>
+      <%= partial :'partials/reading_list', locals: {reading_list: reading_list} %>
     <% end %>
   </div>
-  <%= erb :sidebar %>
+  <%= partial :'partials/sidebar' %>
 </div>

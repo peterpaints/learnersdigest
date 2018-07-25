@@ -17,6 +17,7 @@ gem 'require_all'
 gem 'rufus-scheduler'
 gem 'sinatra'
 gem 'sinatra-flash'
+gem 'sinatra-partial'
 
 group :development do
   gem 'rerun'
