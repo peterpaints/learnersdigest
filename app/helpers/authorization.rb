@@ -6,12 +6,12 @@ module Authorization
     redirect '/'
   end
 
-  def authorized?
+  def logged_in?
     session[:email]
   end
 
-  def require_admin
-    return if authorized?
+  def require_login
+    return if logged_in?
     unauthorized
   end
 end

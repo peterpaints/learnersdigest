@@ -2,10 +2,9 @@
 
 <div class="reading_list-card">
   <div class="reading_list-date">
-    <%= @reading_list.created_at.strftime("%d %b, %Y") %>
+    <%= reading_list.created_at.strftime("%d %b, %Y") %>
   </div>
-  <% @reading_list.articles.each do |article| %>
-    <% @article = article %>
-    <%= erb :article %>
+  <% reading_list.articles.each do |article| %>
+    <%= partial :'partials/article', locals: {article: article} %>
   <% end %>
 </div>

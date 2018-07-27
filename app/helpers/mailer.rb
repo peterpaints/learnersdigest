@@ -22,9 +22,9 @@ module Mailer
     @reading_list = user.reading_lists.last
     b = binding
     b.local_variable_set(:reading_list, @reading_list)
-    template = ERB.new(File.read('app/views/email_reading_list.erb')).result(b)
+    template = ERB.new(File.read('app/views/partials/_email_reading_list.erb'))
+                  .result(b)
     Pony.mail(
-      from: 'digests@learnersdigest.com',
       to: user.email,
       subject: 'Here\'s a few links worth your time today',
       html_body: template

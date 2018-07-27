@@ -1,43 +1,31 @@
 # frozen_string_literal: true
 
-require_relative '../microlearn'
-require_relative 'spec_helper'
+require_relative '../spec_helper'
 
-describe 'Routes' do
+describe PagesController do
   let!(:user) { create(:user) }
-  let!(:user_credentials) do
-    {
-      email: 'test@user.com',
-      password: 'Testpassword1'
-    }
+
+  it 'should allow accessing home page' do
+    get '/'
+    expect(last_response.status).to eq(200)
   end
 
   context 'When authenticated user visits default route "/"' do
     before do
-      post '/login', user_credentials
+      stub_current_user(user)
       get '/'
     end
     it 'should redirect them to dashboard' do
-      expect(last_request.session[:email]).to eq(user_credentials[:email])
+      expect(last_request.session[:email]).to eq(user[:email])
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_request.path).to eq('/dashboard')
     end
   end
 
-  context 'When authenticated user visits topics' do
-    before do
-      post '/login', user_credentials
-      get '/topics'
-    end
-    it 'should display topics' do
-      expect(last_response.status).to eq(200)
-    end
-  end
-
   context 'When authenticated user visits dashboard' do
     before do
-      post '/login', user_credentials
+      stub_current_user(user)
       get '/dashboard'
     end
     it 'should display dashboard' do

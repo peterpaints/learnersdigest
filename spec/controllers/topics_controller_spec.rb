@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
-require_relative '../microlearn'
-require_relative 'spec_helper'
+require_relative '../spec_helper'
 
-describe 'Topics' do
+describe TopicsController do
   let!(:user) { create(:user) }
   let!(:topic) { create(:topic) }
-  let!(:user_credentials) do
-    {
-      email: 'test@user.com',
-      password: 'Testpassword1'
-    }
+
+  context 'When authenticated user visits topics' do
+    before do
+      stub_current_user(user)
+      get '/topics'
+    end
+    it 'should display topics' do
+      expect(last_response.status).to eq(200)
+    end
   end
 
   context 'When a user follows a new topic' do
     before do
-      post '/login', user_credentials
+      stub_current_user(user)
       post '/topics', selected_topics: ['JavaScript']
     end
     it 'should associate topic to user' do
@@ -39,7 +42,7 @@ describe 'Topics' do
 
   context 'When an first time user posts no selected_topics to "/topics"' do
     before do
-      post '/login', user_credentials
+      stub_current_user(user)
       post '/topics'
     end
     it 'should return error response' do

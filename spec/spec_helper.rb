@@ -4,6 +4,8 @@ require 'rack/test'
 require 'rspec'
 require 'factory_bot'
 require 'database_cleaner'
+require 'dm-rspec'
+require 'webmock/rspec'
 require 'simplecov'
 require 'coveralls'
 
@@ -13,18 +15,26 @@ Coveralls.wear!
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../microlearn.rb'
+require_relative './support/fake_newsapi'
+require_relative './support/helpers'
+
+require_all 'app'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 module RSpecMixin
   include Rack::Test::Methods
   include FactoryBot::Syntax::Methods
+  include Helpers
   def app
-    Sinatra::Application
+    described_class
   end
 end
 
 # For RSpec 2.x and 3.x
 RSpec.configure do |c|
   c.include RSpecMixin
+  c.include(DataMapper::Matchers)
 
   c.before(:suite) do
     FactoryBot.find_definitions
@@ -33,6 +43,7 @@ RSpec.configure do |c|
   c.before(:each) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
+    stub_request(:any, /newsapi.org/).to_rack(FakeNewsAPI)
   end
 
   c.after(:each) do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra'
-require_relative './app/controllers/routes'
+require_relative './app/controllers/application_controller'
 require_relative './lib/seeds'
 
 seed
@@ -9,5 +9,5 @@ seed
 set :bind, '127.0.0.1'
 set :port, 5000
 
-class App < Sinatra::Application
+class App < ApplicationController
 end

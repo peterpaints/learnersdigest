@@ -1,0 +1,30 @@
+{
+  "status": "ok",
+  "totalResults": 3257,
+  "articles": [
+    {
+      "source": {
+        "id": null,
+        "name": "Heydesigner.com"
+      },
+      "author": "Travis",
+      "title": "The Modern JavaScript Tutorial",
+      "description": "How it\u2019s done now. From the basics to advanced topics with simple, but detailed explanations. Main course contains 2 parts which cover JavaScript as a programming language and working with a browser. There are also additional series of thematic articles.",
+      "url": "https://heydesigner.com/modern-javascript-tutorial/",
+      "urlToImage": "https://heydesigner.com/wp-content/uploads/social.png",
+      "publishedAt": "2017-11-28T22:47:02Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Codeproject.com"
+      },
+      "author": "Programming Tutorials by Tests4Geeks",
+      "title": "OAuth2 JavaScript Tutorial",
+      "description": "When building modern and socially-aware web applications, the related problems of user authorization and authentication arise repeatedly.",
+      "url": "https://www.codeproject.com/Articles/1224464/OAuth-JavaScript-Tutorial",
+      "urlToImage": null,
+      "publishedAt": "2018-01-09T09:26:00Z"
+    }
+  ]
+}
