@@ -2,7 +2,7 @@
 
 task :environment do
   require_relative './microlearn'
-  require_relative './app/models/models'
+  require_relative './app/models/application'
   require_relative './app/helpers/fetch'
   require_relative './app/helpers/mailer'
 end

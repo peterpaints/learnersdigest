@@ -7,7 +7,6 @@ require 'dm-validations'
 require 'dm-postgres-adapter'
 require 'bcrypt'
 require 'dotenv/load'
-# require 'dm-noisy-failures'
 
 configure :development, :production do
   DataMapper.setup(:default, ENV['DATABASE_URL'])

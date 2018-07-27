@@ -2,7 +2,7 @@
 
 require 'http'
 
-require_relative '../models/models'
+require_relative '../models/application'
 
 module Fetch
   module_function
@@ -13,7 +13,7 @@ module Fetch
     q.gsub!(' ', '%20')
     page = '1'
     page_size = '100'
-    api_key = 'c4b7401b12c240b5a92498f4a6f58bfd'
+    api_key = ENV['API_KEY']
     res = HTTP.get("#{url}q=#{q}&apiKey=#{api_key}&page=#{page}" \
       "&page_size=#{page_size}")
     res = JSON.parse(res)

@@ -3,6 +3,8 @@
 class User
   include DataMapper::Resource
 
+  VALID_PASSWORD = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
+
   property :id,           Serial
   property :email,        String, unique: true, required: true,
                                   format: :email_address,
@@ -13,7 +15,7 @@ class User
                                     format: 'Invalid email or password.'
                                   }
   property :password,     Text, required: true,
-                                format: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/,
+                                format: VALID_PASSWORD,
                                 messages: {
                                   presence: 'Invalid email or password.',
                                   format: 'Invalid email or password.'

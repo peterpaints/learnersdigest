@@ -17,6 +17,7 @@ gem 'require_all'
 gem 'rufus-scheduler'
 gem 'sinatra'
 gem 'sinatra-flash'
+gem 'sinatra-partial'
 
 group :development do
   gem 'rerun'
@@ -25,8 +26,10 @@ end
 group :test do
   gem 'coveralls'
   gem 'database_cleaner'
+  gem 'dm-rspec'
   gem 'factory_bot'
   gem 'rack-test'
   gem 'rspec'
   gem 'simplecov'
+  gem 'webmock'
 end
